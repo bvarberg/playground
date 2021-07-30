@@ -1,0 +1,10 @@
+/*
+ * Do not add styles here!
+ * This is only for applying a CSS reset based on the supported browsers.
+ * See: https://create-react-app.dev/docs/adding-css-reset
+ */
+@import-normalize;
+
+body {
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:4000",
+  "fixturesFolder": false,
+  "integrationFolder": "cypress/tests",
+  "pluginsFile": false,
+  "port": 9999,
+  "scrollBehavior": false,
+  "viewportHeight": 780,
+  "viewportWidth": 360
+}

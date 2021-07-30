@@ -1,0 +1,170 @@
+{
+  "name": "playground",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/node": "^14.17.5",
+    "@types/ramda": "^0.27.44",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.11",
+    "babel-loader": "8.1.0",
+    "ramda": "^0.27.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "styled-components": "^5.3.0",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/node-logger": "^6.3.4",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.4",
+    "@testing-library/cypress": "^7.0.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^13.1.9",
+    "babel-plugin-macros": "^3.1.0",
+    "cypress": "^7.7.0",
+    "dependency-cruiser": "^10.0.5",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-jest-dom": "^3.9.0",
+    "fishery": "^1.4.0",
+    "hygen": "^6.1.0",
+    "prettier": "^2.3.2",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "deps:check": "depcruise --config .depcruise/config.js --output-type err src",
+    "deps:graph": "depcruise --config .depcruise/config.js --output-type dot src | dot -T svg > deps.svg",
+    "deps:report": "depcruise --config .depcruise/config.js --output-type err-html --output-to deps.html src",
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check .",
+    "lint": "eslint src --ext=ts,tsx",
+    "lint:fix": "npm run lint -- --fix",
+    "new:component": "hygen component new",
+    "new:factory": "hygen factory new",
+    "storybook": "start-storybook -p 5000 -s public",
+    "storybook:build": "build-storybook -o storybook-build -s public"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.stories.tsx",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "coverageReporters": [
+      "text"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:testing-library/react",
+      "plugin:jest-dom/recommended",
+      "plugin:cypress/recommended",
+      "prettier"
+    ],
+    "env": {
+      "cypress/globals": true
+    },
+    "rules": {
+      "no-restricted-imports": [
+        "error",
+        {
+          "paths": [
+            {
+              "name": "styled-components",
+              "message": "Please import from styled-components/macro."
+            }
+          ],
+          "patterns": [
+            "!styled-components/macro"
+          ]
+        }
+      ],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreDeclarationSort": true
+        }
+      ],
+      "@typescript-eslint/member-ordering": [
+        "error",
+        {
+          "default": {
+            "order": "alphabetically"
+          }
+        }
+      ],
+      "@typescript-eslint/consistent-type-definitions": [
+        "error",
+        "interface"
+      ],
+      "import/export": "error",
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "never",
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error",
+      "import/no-useless-path-segments": "error",
+      "react/jsx-sort-props": [
+        "error",
+        {
+          "callbacksLast": true,
+          "shorthandFirst": true,
+          "reservedFirst": true
+        }
+      ],
+      "testing-library/no-render-in-setup": "error",
+      "testing-library/prefer-screen-queries": "warn",
+      "testing-library/prefer-wait-for": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.tsx"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

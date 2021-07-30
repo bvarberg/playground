@@ -1,0 +1,69 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Cypress Start",
+      "type": "npm",
+      "script": "start",
+      "options": {
+        "env": {
+          "PORT": "4000"
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "cypress"
+      },
+      "promptOnClose": true,
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Cypress Browser",
+      "type": "npm",
+      "script": "cypress:open",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "cypress"
+      },
+      "promptOnClose": true,
+      "group": "test"
+    },
+    {
+      "label": "Cypress Run",
+      "type": "npm",
+      "script": "cypress:run",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "cypress"
+      },
+      "promptOnClose": true,
+      "group": "test"
+    },
+    {
+      "label": "Cypress",
+      "dependsOn": ["Cypress Start", "Cypress Browser"]
+    },
+    {
+      "label": "Cypress (one shot)",
+      "dependsOn": ["Cypress Start", "Cypress Run"]
+    }
+  ]
+}
