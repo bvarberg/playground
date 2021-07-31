@@ -1,2 +1,3 @@
-export { MapLocator } from "./MapLocator";
+export { Locator } from "./Locator";
+export type { ServiceMap } from "./types";
 export * from "./react";

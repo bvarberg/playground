@@ -3,11 +3,11 @@ import {
   RegisterParams,
   ResolveParams,
   ServiceLocator,
-  ServicesMap,
+  ServiceMap,
 } from "./types";
 
 export class MapLocator implements ServiceLocator {
-  private _serviceMap: Map<keyof ServicesMap, ServicesMap[keyof ServicesMap]>;
+  private _serviceMap: Map<keyof ServiceMap, ServiceMap[keyof ServiceMap]>;
 
   constructor() {
     this._serviceMap = new Map();
