@@ -24,6 +24,9 @@ yarn-debug.log*
 yarn-error.log*
 .eslintcache
 
+# sketches
+.sketches
+
 # intentionally include IDE tooling
 # (this is normally ignored at a higher level)
 !.vscode/

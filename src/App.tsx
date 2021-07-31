@@ -1,31 +1,23 @@
+import { Consumer } from "./Consumer";
 import { Locator, ServiceLocatorProvider } from "./packages/service-locator";
+import { Services } from "./services";
+import { Analytics } from "./services/analytics";
+import { ErrorReporter } from "./services/errorReporter";
 
-interface APIClient {
-  fetch(id: string): { name: string };
+interface Dependencies {
+  analytics: Analytics;
+  errorReporter: ErrorReporter;
 }
 
-interface Logger {
-  error(m: string): void;
-  info(m: string): void;
-}
-
-declare module "./packages/service-locator" {
-  interface ServiceMap {
-    api: APIClient;
-    logger: Logger;
-  }
-}
-
-interface Dependencies {}
-
-export function App(deps: Dependencies) {
+export function App({ analytics, errorReporter }: Dependencies) {
   const locator = new Locator();
-  locator.register("logger", {} as Logger);
-  locator.register("api", {} as APIClient);
+
+  locator.register(Services.ANALYTICS, analytics);
+  locator.register(Services.ERROR_REPORTER, errorReporter);
 
   return (
     <ServiceLocatorProvider value={locator}>
-      <div>Empty</div>
+      <Consumer />
     </ServiceLocatorProvider>
   );
 }
