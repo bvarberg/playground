@@ -13,27 +13,23 @@ export interface ServiceMap {
   [key: string]: unknown;
 }
 
-export type ServiceKey = keyof ServiceMap;
-export type ServiceKeys = Array<ServiceKey>;
+export type Key = keyof ServiceMap;
 
-export type ServiceValue<K extends ServiceKey> = ServiceMap[K];
-export type ServiceValues<A extends Array<ServiceKey>> = {
-  [K in keyof A]: A[K] extends ServiceKey ? ServiceValue<A[K]> : unknown;
+export type Service<K extends Key> = ServiceMap[K];
+export type Services<Keys extends Key[]> = {
+  [K in keyof Keys]: Keys[K] extends Key ? Service<Keys[K]> : unknown;
 };
 
 interface Register {
-  <Key extends ServiceKey, Service extends ServiceValue<Key>>(
-    key: Key,
-    service: Service
-  ): void;
+  <K extends Key, S extends Service<K>>(key: K, service: S): void;
 }
 
 interface Resolve {
-  <Key extends ServiceKey>(key: Key): ServiceValue<Key>;
+  <K extends Key>(key: K): Service<K>;
 }
 
 interface ResolveAll {
-  <Keys extends ServiceKeys>(...keys: [...Keys]): ServiceValues<Keys>;
+  <Keys extends Key[]>(...keys: [...Keys]): Services<Keys>;
 }
 
 export interface ServiceLocator {

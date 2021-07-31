@@ -1,9 +1,9 @@
-import { ServiceKeys, ServiceValues } from "../types";
+import { Key, Services } from "../types";
 import { useLocator } from "./useLocator";
 
-export const useServices = <Keys extends ServiceKeys>(
+export const useServices = <Keys extends Key[]>(
   keys: [...Keys]
-): ServiceValues<Keys> => {
+): Services<Keys> => {
   const locator = useLocator();
 
   /*
@@ -11,7 +11,7 @@ export const useServices = <Keys extends ServiceKeys>(
    * assertion that the values returned by this function match with the known
    * service values in order to get the tuple type we're looking for.
    */
-  const resolvedServices = locator.resolveAll(...keys) as ServiceValues<Keys>;
+  const resolvedServices = locator.resolveAll(...keys) as Services<Keys>;
 
   return resolvedServices;
 };
