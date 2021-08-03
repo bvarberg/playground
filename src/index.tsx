@@ -6,6 +6,13 @@ import { ConsoleErrorReporter } from "./lib/console-error-reporter";
 import { reportWebVitals } from "./reportWebVitals";
 import "./reset.css";
 
+/*
+ * Configure the non-React services here.
+ *
+ * Simple "Factory" pattern employed to get some object that fills the role of
+ * the Dependencies defined in the App
+ */
+
 function getAnalytics() {
   return new ConsoleAnalytics();
 }

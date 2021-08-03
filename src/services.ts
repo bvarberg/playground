@@ -4,7 +4,7 @@ import { ErrorReporter } from "./services/errorReporter";
 /**
  * The service keys that are expected to be registered with the service locator.
  */
-export enum Services {
+export enum Service {
   ANALYTICS = "analytics",
   ERROR_REPORTER = "errorReporter",
 }
@@ -23,7 +23,7 @@ export enum Services {
 
 declare module "./packages/service-locator" {
   interface ServiceMap {
-    [Services.ANALYTICS]: Analytics;
-    [Services.ERROR_REPORTER]: ErrorReporter;
+    [Service.ANALYTICS]: Analytics;
+    [Service.ERROR_REPORTER]: ErrorReporter;
   }
 }
