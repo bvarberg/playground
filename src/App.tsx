@@ -1,4 +1,5 @@
 import { Consumer } from "./Consumer";
+import { GlobalErrorBoundary } from "./GlobalErrorBoundary";
 import { Locator, ServiceLocatorProvider } from "./packages/service-locator";
 import { Services } from "./services";
 import { Analytics } from "./services/analytics";
@@ -17,7 +18,9 @@ export function App({ analytics, errorReporter }: Dependencies) {
 
   return (
     <ServiceLocatorProvider value={locator}>
-      <Consumer />
+      <GlobalErrorBoundary>
+        <Consumer />
+      </GlobalErrorBoundary>
     </ServiceLocatorProvider>
   );
 }
