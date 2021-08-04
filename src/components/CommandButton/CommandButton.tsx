@@ -1,7 +1,7 @@
 import { useServices } from "../../packages/service-locator";
 import { Service } from "../../services";
 
-export function CommandButton() {
+export const CommandButton = () => {
   const services = useServices([Service.ANALYTICS, Service.ERROR_REPORTER]);
   const [analytics, errorReporter] = services;
 
@@ -17,4 +17,4 @@ export function CommandButton() {
   };
 
   return <button onClick={handleClick}>Send Command</button>;
-}
+};

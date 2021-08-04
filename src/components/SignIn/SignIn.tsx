@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSession } from "../../lib/authentication";
 
-export function SignIn() {
+export const SignIn = () => {
   const { signIn } = useSession();
   const [isAuthenticating, setIsAuthenticating] = useState<boolean>(false);
 
@@ -15,4 +15,4 @@ export function SignIn() {
       {isAuthenticating ? "Authenticating..." : "Sign In"}
     </button>
   );
-}
+};

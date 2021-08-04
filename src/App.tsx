@@ -19,7 +19,7 @@ interface Dependencies {
   errorReporter: ErrorReporter;
 }
 
-export function App({ analytics, errorReporter, auth }: Dependencies) {
+export const App = ({ analytics, errorReporter, auth }: Dependencies) => {
   const locator = new Locator();
 
   locator.register(Service.ANALYTICS, analytics);
@@ -41,15 +41,4 @@ export function App({ analytics, errorReporter, auth }: Dependencies) {
       </GlobalErrorBoundary>
     </ServiceLocatorProvider>
   );
-}
-
-/**
- * authProvider: Non-React object that can be used to interact with the abstract
- *    authentication provider
- *
- * AuthenticationProvider: React component that adapts the authProvider for
- *    rendering + access to the current user + session inside the React tree.
- *    In other words, we're hiding authProvider, unlike the other services,
- *    because we need to expose some React state with it, and we'd rather have
- *    consumers access that part specifically.
- */
+};

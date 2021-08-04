@@ -2,7 +2,7 @@ import { useSession } from "../../lib/authentication";
 import { useServices } from "../../packages/service-locator";
 import { Service } from "../../services";
 
-export function CurrentUserDetails() {
+export const CurrentUserDetails = () => {
   const { currentUser, signOut } = useSession();
   const services = useServices([Service.ANALYTICS]);
   const [analytics] = services;
@@ -30,4 +30,4 @@ export function CurrentUserDetails() {
       <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );
-}
+};

@@ -9,9 +9,6 @@ import "./reset.css";
 
 /*
  * Configure the non-React services here.
- *
- * Simple "Factory" pattern employed to get some object that fills the role of
- * the Dependencies defined in the App
  */
 
 function getAnalytics() {
