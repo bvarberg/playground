@@ -10,7 +10,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.11",
     "aws-amplify": "^4.2.2",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.2",
     "fp-ts": "^2.11.1",
     "io-ts": "^2.2.16",
     "ramda": "^0.27.1",
