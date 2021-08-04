@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { App } from "./App";
 import { ConsoleAnalytics } from "./lib/console-analytics";
 import { ConsoleErrorReporter } from "./lib/console-error-reporter";
+import { FakeAuthProvider } from "./lib/fake-auth-provider";
 import { reportWebVitals } from "./reportWebVitals";
 import "./reset.css";
 
@@ -21,9 +22,17 @@ function getErrorReporter() {
   return new ConsoleErrorReporter();
 }
 
+function getAuthProvider() {
+  return new FakeAuthProvider();
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App analytics={getAnalytics()} errorReporter={getErrorReporter()} />
+    <App
+      analytics={getAnalytics()}
+      auth={getAuthProvider()}
+      errorReporter={getErrorReporter()}
+    />
   </React.StrictMode>,
   document.getElementById("root")
 );
