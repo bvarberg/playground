@@ -113,6 +113,10 @@
         "error",
         {
           "default": {
+            "memberTypes": [
+              "field",
+              "method"
+            ],
             "order": "alphabetically"
           }
         }
