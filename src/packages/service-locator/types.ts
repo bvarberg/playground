@@ -20,20 +20,8 @@ export type Services<Keys extends Key[]> = {
   [K in keyof Keys]: Keys[K] extends Key ? Service<Keys[K]> : unknown;
 };
 
-interface Register {
-  <K extends Key, S extends Service<K>>(key: K, service: S): void;
-}
-
-interface Resolve {
-  <K extends Key>(key: K): Service<K>;
-}
-
-interface ResolveAll {
-  <Keys extends Key[]>(...keys: [...Keys]): Services<Keys>;
-}
-
 export interface ServiceLocator {
-  register: Register;
-  resolve: Resolve;
-  resolveAll: ResolveAll;
+  register<K extends Key, S extends Service<K>>(key: K, service: S): void;
+  resolve<K extends Key>(key: K): Service<K>;
+  resolveAll<Keys extends Key[]>(...keys: [...Keys]): Services<Keys>;
 }
