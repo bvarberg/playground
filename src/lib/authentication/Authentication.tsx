@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { AuthProvider } from "../../services/authProvider";
+import { RefreshingIndicator } from "./RefreshingIndicator";
 import { SessionProvider, useSession } from "./SessionContext";
 import { CurrentUser } from "./types";
 
@@ -17,8 +18,7 @@ export const Authentication: FunctionComponent<AuthenticationProps> = ({
   auth,
   children,
 }) => {
-  const [isRefreshingSession, setIsRefreshingSession] =
-    useState<boolean>(false);
+  const [isRefreshingSession, setIsRefreshingSession] = useState<boolean>(true);
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
   // Refresh the user's session, if possible
@@ -63,7 +63,7 @@ export const Authentication: FunctionComponent<AuthenticationProps> = ({
 
   // Don't render while we're attempting to refresh the session.
   if (isRefreshingSession) {
-    return <div>Attempting to refresh session...</div>;
+    return <RefreshingIndicator />;
   }
 
   return <SessionProvider value={session}>{children}</SessionProvider>;
