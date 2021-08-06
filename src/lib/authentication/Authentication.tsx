@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { AuthProvider } from "../../services/authProvider";
-import { SessionContext, useSession } from "./SessionContext";
+import { SessionProvider, useSession } from "./SessionContext";
 import { CurrentUser } from "./types";
 
 interface AuthenticationProps {
@@ -66,11 +66,7 @@ export const Authentication: FunctionComponent<AuthenticationProps> = ({
     return <div>Attempting to refresh session...</div>;
   }
 
-  return (
-    <SessionContext.Provider value={session}>
-      {children}
-    </SessionContext.Provider>
-  );
+  return <SessionProvider value={session}>{children}</SessionProvider>;
 };
 
 /**
