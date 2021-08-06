@@ -28,9 +28,7 @@ export const Authentication: FunctionComponent<AuthenticationProps> = ({
         setIsRefreshingSession(true);
         const session = await auth.getCurrentSession();
 
-        if (session.user) {
-          setCurrentUser(session.user);
-        }
+        setCurrentUser(session.user);
       } finally {
         setIsRefreshingSession(false);
       }
