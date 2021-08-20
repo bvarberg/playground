@@ -30,3 +30,5 @@ yarn-error.log*
 # intentionally include IDE tooling
 # (this is normally ignored at a higher level)
 !.vscode/
+# except the debugging Chrome profile
+.vscode/.chrome-debug
