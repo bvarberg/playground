@@ -4,12 +4,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Cypress Start",
+      "label": "Application",
       "type": "npm",
       "script": "start",
       "options": {
         "env": {
-          "PORT": "4000"
+          "PORT": "${input:port}"
         }
       },
       "presentation": {
@@ -18,12 +18,12 @@
         "focus": false,
         "panel": "new",
         "showReuseMessage": true,
-        "clear": false,
-        "group": "cypress"
+        "group": "dev",
+        "clear": false
       },
       "promptOnClose": true,
       "problemMatcher": [],
-      "group": "test"
+      "isBackground": true
     },
     {
       "label": "Cypress Browser",
@@ -35,10 +35,12 @@
         "focus": false,
         "panel": "new",
         "showReuseMessage": true,
-        "clear": false,
-        "group": "cypress"
+        "group": "cypress",
+        "clear": false
       },
       "promptOnClose": true,
+      "problemMatcher": [],
+      "isBackground": true,
       "group": "test"
     },
     {
@@ -55,15 +57,36 @@
         "group": "cypress"
       },
       "promptOnClose": true,
+      "problemMatcher": [],
       "group": "test"
     },
     {
       "label": "Cypress",
-      "dependsOn": ["Cypress Start", "Cypress Browser"]
+      "dependsOn": ["Application", "Cypress Browser"],
+      "problemMatcher": []
     },
     {
       "label": "Cypress (one shot)",
-      "dependsOn": ["Cypress Start", "Cypress Run"]
+      "dependsOn": ["Application", "Cypress Run"],
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "port",
+      "default": "3000",
+      "description": "What port should the application run on?",
+      "options": [
+        {
+          "label": "dev",
+          "value": "3000"
+        },
+        {
+          "label": "cypress",
+          "value": "4000"
+        }
+      ]
     }
   ]
 }
