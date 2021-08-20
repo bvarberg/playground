@@ -1,4 +1,5 @@
 import { useSession } from "../../lib/authentication";
+import { AppBar, Button } from "../../packages/design-system";
 import { useServices } from "../../packages/service-locator";
 import { Service } from "../../services";
 
@@ -25,9 +26,13 @@ export const CurrentUserDetails = () => {
   };
 
   return (
-    <div>
-      <div>Welcome {currentUser?.name}</div>
-      <button onClick={handleSignOut}>Sign Out</button>
-    </div>
+    <AppBar>
+      <div style={{ alignSelf: "flex-end" }}>
+        <span>Welcome {currentUser?.name} </span>
+        <Button color="#4880d3" onClick={handleSignOut}>
+          Sign Out
+        </Button>
+      </div>
+    </AppBar>
   );
 };

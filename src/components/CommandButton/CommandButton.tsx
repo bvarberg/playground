@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "../../packages/design-system";
 import { useServices } from "../../packages/service-locator";
 import { Service } from "../../services";
 
@@ -23,5 +24,5 @@ export const CommandButton = () => {
     }
   };
 
-  return <button onClick={handleClick}>Send Command</button>;
+  return <Button onClick={handleClick}>Send Command</Button>;
 };

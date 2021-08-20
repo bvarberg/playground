@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { RenderOptions, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import td from "testdouble";
 import {
@@ -25,14 +25,13 @@ describe("CommandButton", () => {
     const locator = new Locator();
     locator.register(Service.ANALYTICS, mockAnalytics);
     locator.register(Service.ERROR_REPORTER, mockErrorReporter);
+    const wrapper: RenderOptions["wrapper"] = ({ children }) => (
+      <ServiceLocatorProvider value={locator}>
+        {children}
+      </ServiceLocatorProvider>
+    );
 
-    render(<CommandButton />, {
-      wrapper: ({ children }) => (
-        <ServiceLocatorProvider value={locator}>
-          {children}
-        </ServiceLocatorProvider>
-      ),
-    });
+    render(<CommandButton />, { wrapper });
     userEvent.click(screen.getByRole("button"));
 
     td.verify(

@@ -1,13 +1,13 @@
 import styled from "styled-components/macro";
 
 export const AppBar = styled.div.attrs((props) => ({
-  padding: props.theme.spacing(2),
+  margin: props.theme.spacing(2),
 }))`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: calc(100vw - ${(props) => 2 * props.padding});
-  padding: ${(props) => props.padding};
+  width: calc(100vw - ${(props) => 2 * props.margin});
+  margin: ${(props) => props.margin};
 `;
 
 AppBar.defaultProps = {
