@@ -7,11 +7,13 @@ import {
 import { useServices } from "../packages/service-locator";
 import { ERROR_REPORTER } from "../services";
 
-interface GlobalErrorBoundaryProps {
+interface ApplicationErrorBoundaryProps {
   children?: ReactNode | undefined;
 }
 
-export const GlobalErrorBoundary = ({ children }: GlobalErrorBoundaryProps) => {
+export const ApplicationErrorBoundary = ({
+  children,
+}: ApplicationErrorBoundaryProps) => {
   const services = useServices([ERROR_REPORTER]);
   const [errorReporter] = services;
 

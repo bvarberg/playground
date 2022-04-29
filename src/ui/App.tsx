@@ -3,7 +3,7 @@ import { ANALYTICS, ERROR_REPORTER } from "../services";
 import { Analytics } from "../services/analytics";
 import { AuthProvider } from "../services/authProvider";
 import { ErrorReporter } from "../services/errorReporter";
-import { GlobalErrorBoundary } from "./GlobalErrorBoundary";
+import { ApplicationErrorBoundary } from "./ApplicationErrorBoundary";
 import {
   Authenticated,
   Authentication,
@@ -27,7 +27,7 @@ export const App = ({ analytics, errorReporter, auth }: Dependencies) => {
 
   return (
     <ServiceLocatorProvider value={locator}>
-      <GlobalErrorBoundary>
+      <ApplicationErrorBoundary>
         <Authentication auth={auth}>
           <Authenticated>
             <CurrentUserDetails />
@@ -37,7 +37,7 @@ export const App = ({ analytics, errorReporter, auth }: Dependencies) => {
             <SignIn />
           </Unauthenticated>
         </Authentication>
-      </GlobalErrorBoundary>
+      </ApplicationErrorBoundary>
     </ServiceLocatorProvider>
   );
 };
