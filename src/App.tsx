@@ -12,6 +12,7 @@ import { ANALYTICS, ERROR_REPORTER } from "./services";
 import { Analytics } from "./services/analytics";
 import { AuthProvider } from "./services/authProvider";
 import { ErrorReporter } from "./services/errorReporter";
+import "./reset.css";
 
 interface Dependencies {
   analytics: Analytics;
