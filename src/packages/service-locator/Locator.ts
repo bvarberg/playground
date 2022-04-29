@@ -34,10 +34,6 @@ export class Locator implements ServiceLocator {
       );
     }
 
-    /*
-     * TODO (bvarberg): Figure out why this type assertion is necessary...
-     * I guess because #map doesn't return a tuple.
-     */
     const services = keys.map((key) =>
       this._serviceMap.get(key)
     ) as Services<Keys>;
