@@ -4,8 +4,8 @@ import {
   ErrorBoundaryProps,
   FallbackProps,
 } from "react-error-boundary";
-import { useServices } from "./packages/service-locator";
-import { ERROR_REPORTER } from "./services";
+import { useServices } from "../packages/service-locator";
+import { ERROR_REPORTER } from "../services";
 
 interface GlobalErrorBoundaryProps {
   children?: ReactNode | undefined;

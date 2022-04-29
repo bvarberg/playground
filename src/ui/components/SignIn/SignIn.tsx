@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components/macro";
-import { useSession } from "../../lib/authentication";
-import { Button } from "../../packages/design-system";
+import { Button } from "../../../packages/design-system";
+import { useSession } from "../../authentication";
 
 export const SignIn = () => {
   const { signIn } = useSession();

@@ -4,10 +4,10 @@ import td from "testdouble";
 import {
   Locator,
   ServiceLocatorProvider,
-} from "../../packages/service-locator";
-import { ANALYTICS, ERROR_REPORTER } from "../../services";
-import { Analytics } from "../../services/analytics";
-import { ErrorReporter } from "../../services/errorReporter";
+} from "../../../packages/service-locator";
+import { ANALYTICS, ERROR_REPORTER } from "../../../services";
+import { Analytics } from "../../../services/analytics";
+import { ErrorReporter } from "../../../services/errorReporter";
 import { CommandButton } from "./CommandButton";
 
 /**

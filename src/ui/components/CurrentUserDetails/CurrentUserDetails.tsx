@@ -1,7 +1,7 @@
-import { useSession } from "../../lib/authentication";
-import { AppBar, Button } from "../../packages/design-system";
-import { useServices } from "../../packages/service-locator";
-import { ANALYTICS } from "../../services";
+import { AppBar, Button } from "../../../packages/design-system";
+import { useServices } from "../../../packages/service-locator";
+import { ANALYTICS } from "../../../services";
+import { useSession } from "../../authentication";
 
 export const CurrentUserDetails = () => {
   const { currentUser, signOut } = useSession();

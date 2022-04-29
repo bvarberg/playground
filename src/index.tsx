@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { App } from "./App";
 import { ConsoleAnalytics } from "./lib/console-analytics";
 import { ConsoleErrorReporter } from "./lib/console-error-reporter";
 import { FakeAuthProvider } from "./lib/fake-auth-provider";
 import { reportWebVitals } from "./reportWebVitals";
+import { App } from "./ui/App";
 
 /*
  * Configure the non-React services here.

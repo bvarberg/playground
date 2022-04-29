@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "../../packages/design-system";
-import { useServices } from "../../packages/service-locator";
-import { ANALYTICS, ERROR_REPORTER } from "../../services";
+import { Button } from "../../../packages/design-system";
+import { useServices } from "../../../packages/service-locator";
+import { ANALYTICS, ERROR_REPORTER } from "../../../services";
 
 export const CommandButton = () => {
   const services = useServices([ANALYTICS, ERROR_REPORTER]);
