@@ -22,15 +22,22 @@ function getAuthProvider() {
   return new FakeAuthProvider();
 }
 
+const analytics = getAnalytics();
+const auth = getAuthProvider();
+const errorReporter = getErrorReporter();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      analytics={getAnalytics()}
-      auth={getAuthProvider()}
-      errorReporter={getErrorReporter()}
-    />
+    <App analytics={analytics} auth={auth} errorReporter={errorReporter} />
   </React.StrictMode>,
   document.getElementById("root")
 );
 
-reportWebVitals(console.log);
+reportWebVitals((metric) =>
+  analytics.track({
+    eventName: `web-vital:${metric.name}`,
+    payload: {
+      metric,
+    },
+  })
+);
