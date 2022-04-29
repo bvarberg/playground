@@ -18,9 +18,9 @@ export const CommandButton = () => {
         throw Error("Don't click more than twice, please");
       }
     } catch (err) {
-      errorReporter.record(err);
+      errorReporter.record(err as Error);
     } finally {
-      setClickCount((c) => clickCount + 1);
+      setClickCount((count) => count + 1);
     }
   };
 
