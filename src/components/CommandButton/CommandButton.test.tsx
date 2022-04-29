@@ -5,7 +5,7 @@ import {
   Locator,
   ServiceLocatorProvider,
 } from "../../packages/service-locator";
-import { Service } from "../../services";
+import { ANALYTICS, ERROR_REPORTER } from "../../services";
 import { Analytics } from "../../services/analytics";
 import { ErrorReporter } from "../../services/errorReporter";
 import { CommandButton } from "./CommandButton";
@@ -19,12 +19,12 @@ import { CommandButton } from "./CommandButton";
  */
 
 describe("CommandButton", () => {
-  it("collaborates with the analytics service to track when the button is clicked", () => {
+  it("tracks clicks with the analytics service", () => {
     const mockAnalytics = td.object<Analytics>();
     const mockErrorReporter = td.object<ErrorReporter>();
     const locator = new Locator();
-    locator.register(Service.ANALYTICS, mockAnalytics);
-    locator.register(Service.ERROR_REPORTER, mockErrorReporter);
+    locator.register(ANALYTICS, mockAnalytics);
+    locator.register(ERROR_REPORTER, mockErrorReporter);
     const wrapper: RenderOptions["wrapper"] = ({ children }) => (
       <ServiceLocatorProvider value={locator}>
         {children}
@@ -42,12 +42,12 @@ describe("CommandButton", () => {
   });
 
   describe("after clicking more than 2 times", () => {
-    it("collaborates with the errorReporter to report when an error is thrown", () => {
+    it("reports an error to the errorReporter", () => {
       const mockAnalytics = td.object<Analytics>();
       const mockErrorReporter = td.object<ErrorReporter>();
       const locator = new Locator();
-      locator.register(Service.ANALYTICS, mockAnalytics);
-      locator.register(Service.ERROR_REPORTER, mockErrorReporter);
+      locator.register(ANALYTICS, mockAnalytics);
+      locator.register(ERROR_REPORTER, mockErrorReporter);
 
       render(<CommandButton />, {
         wrapper: ({ children }) => (

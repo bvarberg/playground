@@ -5,14 +5,14 @@ import {
   FallbackProps,
 } from "react-error-boundary";
 import { useServices } from "./packages/service-locator";
-import { Service } from "./services";
+import { ERROR_REPORTER } from "./services";
 
 interface GlobalErrorBoundaryProps {
   children?: ReactNode | undefined;
 }
 
 export const GlobalErrorBoundary = ({ children }: GlobalErrorBoundaryProps) => {
-  const services = useServices([Service.ERROR_REPORTER]);
+  const services = useServices([ERROR_REPORTER]);
   const [errorReporter] = services;
 
   const onError: ErrorBoundaryProps["onError"] = (error) => {

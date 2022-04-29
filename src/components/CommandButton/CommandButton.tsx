@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Button } from "../../packages/design-system";
 import { useServices } from "../../packages/service-locator";
-import { Service } from "../../services";
+import { ANALYTICS, ERROR_REPORTER } from "../../services";
 
 export const CommandButton = () => {
-  const services = useServices([Service.ANALYTICS, Service.ERROR_REPORTER]);
+  const services = useServices([ANALYTICS, ERROR_REPORTER]);
   const [analytics, errorReporter] = services;
   const [clickCount, setClickCount] = useState<number>(0);
 

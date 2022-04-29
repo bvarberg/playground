@@ -8,7 +8,7 @@ import {
   Unauthenticated,
 } from "./lib/authentication";
 import { Locator, ServiceLocatorProvider } from "./packages/service-locator";
-import { Service } from "./services";
+import { ANALYTICS, ERROR_REPORTER } from "./services";
 import { Analytics } from "./services/analytics";
 import { AuthProvider } from "./services/authProvider";
 import { ErrorReporter } from "./services/errorReporter";
@@ -21,9 +21,8 @@ interface Dependencies {
 
 export const App = ({ analytics, errorReporter, auth }: Dependencies) => {
   const locator = new Locator();
-
-  locator.register(Service.ANALYTICS, analytics);
-  locator.register(Service.ERROR_REPORTER, errorReporter);
+  locator.register(ANALYTICS, analytics);
+  locator.register(ERROR_REPORTER, errorReporter);
 
   return (
     <ServiceLocatorProvider value={locator}>

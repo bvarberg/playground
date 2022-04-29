@@ -1,11 +1,11 @@
 import { useSession } from "../../lib/authentication";
 import { AppBar, Button } from "../../packages/design-system";
 import { useServices } from "../../packages/service-locator";
-import { Service } from "../../services";
+import { ANALYTICS } from "../../services";
 
 export const CurrentUserDetails = () => {
   const { currentUser, signOut } = useSession();
-  const services = useServices([Service.ANALYTICS]);
+  const services = useServices([ANALYTICS]);
   const [analytics] = services;
 
   if (!currentUser) {
