@@ -31,7 +31,6 @@ export const App = ({ analytics, errorReporter, auth }: Dependencies) => {
           <Authenticated>
             <CurrentUserDetails />
             <CommandButton />
-            <p>Other features that require authentication go here.</p>
           </Authenticated>
           <Unauthenticated>
             <SignIn />
