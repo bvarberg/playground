@@ -28,7 +28,7 @@ export const CurrentUserDetails = () => {
   return (
     <AppBar>
       <div style={{ alignSelf: "flex-end" }}>
-        <span>Welcome {currentUser?.name} </span>
+        <span>{currentUser?.name}</span>
         <Button color="#4880d3" onClick={handleSignOut}>
           Sign Out
         </Button>
