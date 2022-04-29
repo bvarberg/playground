@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { ConsoleAnalytics } from "./lib/console-analytics";
 import { ConsoleErrorReporter } from "./lib/console-error-reporter";
 import { FakeAuthProvider } from "./lib/fake-auth-provider";
-import { reportWebVitals } from "./reportWebVitals";
+import { reportWebVitals } from "./lib/web-vitals";
 import { App } from "./ui/App";
 
 /*
