@@ -45,15 +45,15 @@ jobs:
       - if: always()
         uses: actions/upload-artifact@v1
         with:
-          name: dependency-graph
-          path: ./deps.svg
+          name: dependency-graph.html
+          path: ./deps-graph.html
       - if: always()
         run: npm run deps:report
       - if: always()
         uses: actions/upload-artifact@v1
         with:
-          name: dependency-report
-          path: ./deps.html
+          name: dependency-report.html
+          path: ./deps-report.html
 
   unit:
     name: Unit tests
