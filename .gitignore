@@ -9,8 +9,10 @@
 # static artifacts
 /build
 /storybook-build
-deps.svg
-deps.html
+deps.json
+deps-graph.html
+deps-folders.html
+deps-report.html
 
 # misc
 .DS_Store

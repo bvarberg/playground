@@ -47,11 +47,25 @@ module.exports = {
     },
     reporterOptions: {
       dot: {
-        collapsePattern: "node_modules/[^/]+",
+        // Instability value = # dependencies / (# dependencies + # dependents)
+        // -> Higher value hints at instability
+        // -> Lower value hints at stablility
+        showMetrics: true,
+        collapsePattern: ["node_modules/[^/]+", "^src/packages/[^/]+"],
+        // Specifically filter out some files when formatting as a graph
+        filters: {
+          focus: {
+            path: ["^src"],
+          },
+          exclude: {
+            path: ["^src/.*\\.test.tsx?", "^src/.*\\.stories.tsx?"],
+          },
+        },
         theme: {
           // Palette: ['#8dd3c7','#ffffb3','#bebada','#fb8072', '#cccccc77']
           graph: {
-            // rankdir: "TD", // i.e. top down (vertical)
+            splines: "ortho", // i.e., straight connector lines
+            rankdir: "TD", // i.e., top down (vertical)
           },
           // Nodes
           modules: [
