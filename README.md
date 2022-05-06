@@ -1,5 +1,7 @@
-# Service Locator
+# Playground
 
-Exploring the service locator pattern. Re-implementing a version of
-[react-decoupler](https://github.com/testdouble/react-decoupler) but with fewer
-features, and in TypeScript.
+On this branch: mostly exploring the service locator pattern, and how it plays a
+role in organizing a React application.
+
+See [`./src/packages/service-locator`](./src/packages/service-locator/) for more
+on that.
