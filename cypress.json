@@ -6,5 +6,6 @@
   "port": 9999,
   "scrollBehavior": false,
   "viewportHeight": 780,
-  "viewportWidth": 360
+  "viewportWidth": 360,
+  "video": false
 }
