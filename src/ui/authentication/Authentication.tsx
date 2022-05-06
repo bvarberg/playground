@@ -5,6 +5,8 @@ import {
   useMemo,
   useState,
 } from "react";
+import { useServices } from "../../packages/service-locator";
+import { ERROR_REPORTER } from "../../services";
 import { AuthProvider } from "../../services/authProvider";
 import { RefreshingIndicator } from "./RefreshingIndicator";
 import { SessionProvider, useSession } from "./SessionContext";
@@ -18,6 +20,8 @@ export const Authentication: FunctionComponent<AuthenticationProps> = ({
   auth,
   children,
 }) => {
+  const services = useServices([ERROR_REPORTER]);
+  const [errorReporter] = services;
   const [isRefreshingSession, setIsRefreshingSession] = useState<boolean>(true);
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
@@ -42,19 +46,19 @@ export const Authentication: FunctionComponent<AuthenticationProps> = ({
       const session = await auth.signIn();
       setCurrentUser(session.user);
     } catch (error) {
-      // TODO: Maybe there is something to do if there's a specific error.
+      errorReporter.record(error as Error);
     }
-  }, [auth, setCurrentUser]);
+  }, [auth, setCurrentUser, errorReporter]);
 
   const signOut = useCallback(async () => {
     try {
       await auth.signOut();
     } catch (error) {
-      // TODO: Maybe there is something to do if there's a specific error?
+      errorReporter.record(error as Error);
     } finally {
       setCurrentUser(null);
     }
-  }, [auth, setCurrentUser]);
+  }, [auth, setCurrentUser, errorReporter]);
 
   const session = useMemo(
     () => ({ currentUser, signIn, signOut }),
