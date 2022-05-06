@@ -17,6 +17,10 @@ module.exports = {
         pathNot: "^src/components/$1/.+",
       },
     },
+    {
+      name: "no-orphans",
+      severity: "warn",
+    },
   ],
   options: {
     doNotFollow: {
