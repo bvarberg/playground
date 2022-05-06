@@ -1,4 +1,4 @@
-name: CI
+name: Verify
 
 on: [push]
 
@@ -37,6 +37,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
       - run: npm ci
       - if: always()
         run: npm run deps:graph
